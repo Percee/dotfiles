@@ -1,0 +1,196 @@
+: 1650418387:0;echo $SAVEHIST
+: 1650418387:0;ls abc
+: 1650418387:0;run-help echo
+: 1650418387:0;echo $SHELL
+: 1650418387:0;which zsh
+: 1650418387:0;echo $0
+: 1650418387:0;cd shell
+: 1650418387:0;cat interactive
+: 1650418387:0;less login
+: 1650418387:0;cd ../zsh
+: 1650418387:0;cat interactive >> login
+: 1650418387:0;cd ..
+: 1650418387:0;echo $PROMPT
+: 1650418387:0;ls lol
+: 1650418387:0;history
+: 1650418387:0;r
+: 1650418387:0;man r
+: 1650418387:0;r --h
+: 1650418387:0;r -h
+: 1650418387:0;zsh
+: 1650418387:0;cd zsh
+: 1650418387:0;cat login
+: 1650418387:0;vim log
+: 1650418387:0;cd .config
+: 1650418387:0;cd bash
+: 1650418387:0;bash
+: 1650418387:0;touch abc
+: 1650418387:0;touch abd
+: 1650418387:0;setopt -h
+: 1650418387:0;setopt -l
+: 1650418387:0;workspace/
+: 1650418387:0;setopt abcd
+: 1650418387:0;setopt auto_list
+: 1650418387:0;unsetopt
+: 1650418387:0;setopt correct
+: 1650418387:0;git statu
+: 1650418387:0;ls -L
+: 1650418387:0;gti
+: 1650418387:0;git
+: 1650418387:0;setopt correct_all
+: 1650418387:0;ls wokspace
+: 1650418387:0;sl workspace
+: 1650418387:0;ss workspace
+: 1650418387:0;setopt
+: 1650418387:0;vimz
+: 1650418387:0;a=workspace
+: 1650418387:0;a=./workspace
+: 1650418387:0;a=/etc
+: 1650418387:0;a
+: 1650418387:0;~a
+: 1650418387:0;cd .config/zsh
+: 1650418387:0;echo $DIRSTACK
+: 1650418387:0;ZDOTDIR
+: 1650418387:0;cd $ZDOTDIR
+: 1650418387:0;zmodload -i zsh/complist
+: 1650418387:0;zmodload
+: 1650418387:0;compinstall
+: 1650418387:0;cat ~/.zshenv
+: 1650418387:0;dirs -v .
+: 1650418387:0;dirs -v *
+: 1650418387:0;ls -h
+: 1650418387:0;ls -lh
+: 1650418387:0;alias ll
+: 1650418387:0;ll
+: 1650418387:0;man cp
+: 1650418387:0;pv
+: 1650418387:0;ls -alh
+: 1650418387:0;alias la
+: 1650418387:0;lr
+: 1650418387:0;man ls
+: 1650418387:0;alias frep
+: 1650418387:0;alias grep
+: 1650418387:0;man grep
+: 1650418387:0;xclip
+: 1650418387:0;time
+: 1650418387:0;noglob
+: 1650418387:0;noglob calcul
+: 1650418387:0;netstat -tulpn 
+: 1650418387:0;netstat
+: 1650418387:0;sudoedit
+: 1650418387:0;sudoedit abc
+: 1650418387:0;which vim
+: 1650418387:0;export SUDO_EDITOR=/usr/bin/vim
+: 1650418387:0;export SUDO_EDITOR=v
+: 1650418387:0;sudoedit rgb.txt
+: 1650418387:0;man sudoedit
+: 1650418387:0;which vi
+: 1650418387:0;cd .config/shell
+: 1650418387:0;cat env_functions
+: 1650418387:0;which v
+: 1650418387:0;cd /etc
+: 1650418387:0;cd X11
+: 1650418387:0;sv rgb.txt
+: 1650418387:0;echo $VISUAL
+: 1650418387:0;sh
+: 1650418387:0;man git
+: 1650418387:0;git status --help
+: 1650418387:0;man git-jump
+: 1650418387:0;git-jump
+: 1650418387:0;alias tksv
+: 1650418387:0;man autoload
+: 1650418387:0;echo $fpath
+: 1650418387:0;cd workspace
+: 1650418387:0;workspace
+: 1650418387:0;d
+: 1650418387:0;2
+: 1650418387:0;l
+: 1650418387:0;dzada
+: 1650418387:0;wd
+: 1650418387:0;vim interactive
+: 1650418387:0;dirs -v
+: 1650418732:0;tmux
+: 1650418746:0;fg
+: 1650419559:0;cat
+: 1650419608:0;dzadaz
+: 1650419834:0;alias ls
+: 1650419841:0;ls echo $LS_COLORS
+: 1650419948:0;pwd
+: 1650419953:0;vim login
+: 1650419985:0;echo $LS_COLORS
+: 1650419995:0;ls -l
+: 1650419998:0;la
+: 1650420000:0;ls -la
+: 1650420175:0;ls .bash_profile
+: 1650420800:0;autoload pv
+: 1650420880:0;HOME
+: 1650421122:0;gs
+: 1650421131:0;less interactive
+: 1650421191:0;lllra
+: 1650421544:0;:w
+: 1650421578:0;ssh cd
+: 1650421580:0;cd .ssh
+: 1650421582:0;cat known_hosts
+: 1650421830:0;ls .
+: 1650421895:0;ls .emacs.d
+: 1650422081:0;cd
+: 1650422081:0;ls
+: 1650461855:0;cd
+: 1650461856:0;cd workspace
+: 1650461857:0;ls
+: 1650461859:0;mkdir test
+: 1650461860:0;test
+: 1650461861:0;mkdir a_dir_with_a_file empty_dir && touch a_dir_with_a_file/a_file A_FILE_WITH_UPPERCASE another_file file_1 file_2
+: 1650461861:0;ls
+: 1650461875:0;cat fil?_1
+: 1650461877:0;ls
+: 1650461880:0;ls fil?_1
+: 1650462015:0;ls another_file ansible-deploy file_1 file_2
+: 1650462022:0;ls ansible-deploy
+: 1650462025:0;ls
+: 1650462051:0;e
+: 1650462075:0;cd
+: 1650462076:0;cd .doom.d
+: 1650462077:0;ls
+: 1650462079:0;cat config.el
+: 1650462082:0;cd
+: 1650462082:0;ls
+: 1650462083:0;la
+: 1650462087:0;rm -rf .doom.d
+: 1650462089:0;killall emac
+: 1650462091:0;killall emacs
+: 1650462098:0;mv .doom.d.bkp .doom.d
+: 1650462100:0;doom sync
+: 1650463232:0;e
+: 1650463381:0;ls
+: 1650463381:0;pwd
+: 1650463382:0;cd workspace
+: 1650463383:0;test
+: 1650463383:0;ls
+: 1650463387:0;ls *(F)
+: 1650463394:0;ls emacs
+: 1650463396:0;ls
+: 1650463397:0;pwd
+: 1650463403:0;pwd
+: 1650463405:0;cd test
+: 1650463406:0;ls
+: 1650463407:0;cd ..
+: 1650463421:0;mv *(^emacs) tet
+: 1650463423:0;mv *(^emacs) test
+: 1650463426:0;mv * test
+: 1650463428:0;mv test/emacs .
+: 1650463428:0;ls
+: 1650463429:0;cd test
+: 1650466158:0;ls
+: 1650466159:0;cd test
+: 1650466162:0;ls
+: 1650466187:0;cd
+: 1650466188:0;ls
+: 1650466198:0;cd workspace/test
+: 1650466199:0;ls
+: 1650466237:0;ls A_FILE_WITH_UPPERCASE
+: 1650466239:0;ls
+: 1650467043:0;sl
+: 1650467046:0;ls -l
+: 1650467049:0;touch file_2
+: 1650467050:0;ll

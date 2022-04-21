@@ -1,0 +1,113 @@
+# This file is for
+# - Setting a terminal specific environment variable
+# - Defining aliases
+
+. ~/.config/shell/env_functions
+if [ "$(command_available chezmoi)" = "0" ]; then
+	alias cm="chezmoi"
+	alias cmcd="chezmoi cd"
+fi
+
+alias v="$editor"
+alias sv='sudoedit'
+
+alias en='emacs -nw'
+alias e='emacsclient --tty -s tty --alternate-editor='
+
+alias g="git"
+alias ga="git add"
+alias gs="git status"
+alias gss="git status -s"
+alias gc="git commit"
+alias gp="git push"
+alias gpo="git push origin"
+alias gpt="git push --tag"
+alias gtd="git tag --delete"
+alias gb="git branch"
+alias gd="git diff"
+alias gl="git log"
+alias glo='git log --pretty="oneline"'
+alias glol='git log --graph --oneline --decorate'
+alias gr="git remote"
+alias grs="git remote show"
+alias gco="git checkout"
+alias gpl="git pull"
+
+alias less="less -R" # don't escape color control characters
+
+alias ls="ls -h --color=auto"
+alias l="ls"
+alias la="ls -A"
+alias lr="ls -R"
+alias lra="ls -RA"
+alias ll="ls -l"
+alias llr="ll -R"
+alias lla="ll -A"
+alias llra="lla -R"
+alias lll="ll | $PAGER"
+alias llla="lla | $PAGER"
+alias lllra="llra | $PAGER"
+
+alias lx="ll -X" # sorted by extension
+alias lk="ll -Sr" # sorted by size, largest last
+alias lt="ll -tr" # sorted by date, most recent last
+alias lc="lt -c" # like lt but also show change time
+alias lu="lt -u" # like lt but also show access time
+
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -i"
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# whoopsies
+alias sl="ls"
+alias dc"=cd"
+
+alias ..="cd .."
+alias ...="cd ..."
+alias ....="cd ...."
+alias .....="cd ....."
+
+alias d="dirs -v" # display directories on the pushd stacks
+for index ({1..9}) alias "$index"="cd +${index}"; unset index # Aliases from 1 to 9 to jump to a dir on the stack
+
+alias _="sudo"
+
+alias psg="ps aux | grep"
+alias port="netstat -ltnup | grep"
+
+alias diskspace="du -Sh | sort -n -r | less"
+
+alias tmux="tmux -u"
+alias tksv="tmux kill-server"
+alias tmuxa="tmux attach -t"
+alias tmuxl="tmux list-sessions"
+alias tmuxk="tmux kill-session -t"
+
+alias dockls="docker container ls | awk '{print $NF}'"	# display names of running containers
+alias dockprune='docker system prune -a'		# prune everything
+
+# Check out https://github.com/mitsuhiko/unp for a more complete alternative
+x () {
+   if [ -f $1 ] ; then
+       case $1 in
+           *.tar.bz2)   tar xvjf $1    ;;
+           *.tar.gz)    tar xvzf $1    ;;
+           *.bz2)       bunzip2 $1     ;;
+           *.rar)       unrar x $1       ;;
+           *.gz)        gunzip $1      ;;
+           *.tar)       tar xvf $1     ;;
+           *.tbz2)      tar xvjf $1    ;;
+           *.tgz)       tar xvzf $1    ;;
+           *.zip)       unzip $1       ;;
+           *.Z)         uncompress $1  ;;
+           *.7z)        7z x $1        ;;
+           *)           echo "don't know how to extract '$1'..." ;;
+       esac
+   else
+       echo "'$1' is not a valid file!"
+   fi
+}

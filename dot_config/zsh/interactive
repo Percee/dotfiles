@@ -1,0 +1,191 @@
+. ~/.config/shell/interactive
+
+unsetopt beep
+
+setopt prompt_subst 		# treat $PROMPT as a vanilla shell variable (perform command substitution, parameter and arithmetic expansion)
+
+setopt share_history 		# Read & write to history file on each command
+setopt hist_ignore_all_dups	# Upon appending to history, remove older identical commands
+setopt hist_save_no_dups	# Don't save any duplicate to history file
+setopt hist_reduce_blanks	# Remove superfluous blanks from each command being added to history
+setopt extended_history		# Timestamp each command
+
+setopt auto_list		# Automatically list choices on ambiguous completion
+setopt auto_menu		# Automatically use menu completion
+setopt menu_complete		# Automatically select first element of completion menu
+setopt always_to_end		# Move cursor to end if word had one match
+setopt complete_in_word		# Complete from anywhere withing a word ('work|ace' press TAB -> 'workspace|')
+
+setopt correct_all		# Attempt to correct command and arguments ('lss wokspace')
+setopt hash_list_all		# First completion slower, but avoids false report of spelling error
+
+setopt autocd			# Type directory name to cd into it
+setopt autopushd		# Every cd will also do a pushd onto a stack. Use popd to go back up the stack
+setopt pushd_silent		# Don't print directory stack after pushd/popd
+setopt cdable_vars		# Type var name to cd into it ('abc=/etc' then 'cd abc')
+setopt clobber			# Allow '>' redirection to truncate file (otherwise need '>!' or '>|')
+setopt multios			# Perform implicit tee or cat when doing multiple redirection ('cat file >out1 >out2')
+
+
+# call 'compinstall' for interactive completion setup
+zmodload -i zsh/complist	# complist is zsh module to extend completion listings. call before loading compinit
+# autoload X = search in $fpath for the file X containing shell commands, and load its content as a function named X that you can then call
+autoload -Uz compinit; compinit
+_comp_options+=(globdots)	# Complete hidden files
+
+# Use C-x C-e or v to edit current command line in $VISUAL
+autoload -Uz edit-command-line
+zle -N edit-command-line
+
+
+up-line-or-local-history() {
+    zle set-local-history 1
+    zle up-line-or-history
+    zle set-local-history 0
+}
+zle -N up-line-or-local-history
+down-line-or-local-history() {
+    zle set-local-history 1
+    zle down-line-or-history
+    zle set-local-history 0
+}
+zle -N down-line-or-local-history
+
+####### Vi mode
+autoload -U select-word-style
+select-word-style bash
+bindkey -v      #enable vi mode
+export KEYTIMEOUT=10
+### Vi normal mode
+bindkey -M vicmd '^[' undefined-key \
+                 '^?' backward-delete-char \
+                 '^[^?' backward-kill-word \
+                 '^[[3~' delete-char \
+                 '^[^[[3~' vi-kill-word \
+                 '^G' kill-buffer \
+                 'v' edit-command-line
+# Copy/paste
+bindkey -M vicmd 'p' vi-put-after \
+                 'P' vi-put-before
+# History
+bindkey -M vicmd '^P' up-line-or-local-history \
+                 '^N' down-line-or-local-history
+### Vi insert mode
+# Movements
+bindkey -M viins '^A' beginning-of-line \
+                 '^E' end-of-line \
+                 '^H' backward-char \
+                 '^[h' backward-word \
+                 '^[^H' vi-backward-blank-word \
+                 '^L' forward-char \
+                 '^[l' forward-word \
+                 '^[^L' vi-forward-blank-word
+# Delete/kill
+bindkey -M viins '^B' backward-kill-word \
+                 '^[b' backward-delete-word \
+                 '^D' kill-word \
+                 '^[d' delete-word \
+                 '^X' delete-char \
+                 '^[x' backward-delete-char \
+                 '^[' undefined-key \
+                 '^G' kill-buffer \
+                 '^[^?' backward-kill-word \
+                 '^[^[[3~' kill-word \
+                 '^[[3~' kill-char
+# Copy/paste
+bindkey -M viins '^Y' vi-put-after
+# History
+bindkey -M viins '^P' up-line-or-local-history \
+                 '^N' down-line-or-local-history
+# Various
+bindkey -M viins '^[^X' edit-command-line \
+                 'jk' vi-cmd-mode \
+                 'kj' vi-cmd-mode
+### Text objects
+autoload -Uz select-bracketed select-quoted
+zle -N select-quoted
+zle -N select-bracketed
+for km in viopp visual; do
+  bindkey -M $km -- '-' vi-up-line-or-history
+  for c in {a,i}${(s..)^:-\'\"\`\|,./:;=+@}; do
+    bindkey -M $km $c select-quoted
+  done
+  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+    bindkey -M $km $c select-bracketed
+  done
+done
+### Surrounding
+autoload -Uz surround
+zle -N delete-surround surround
+zle -N add-surround surround
+zle -N change-surround surround
+bindkey -M vicmd cs change-surround
+bindkey -M vicmd ds delete-surround
+bindkey -M vicmd ys add-surround
+bindkey -M visual S add-surround
+
+
+
+### Completion
+bindkey -M menuselect 'j' vi-down-line-or-history \
+		      'k' vi-up-line-or-history \
+		      'h' vi-backward-char \
+		      'l' vi-forward-char \
+		      '^[j' accept-and-hold \
+		      '^U' undo
+
+
+
+# Completion
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu select
+zstyle ':completion:*' group-name '' # group by category
+zstyle ':completion:*:*:-command-:*:*' group-order aliases builtins functions commands
+zstyle ':completion:*' completer _expand _expand_alias  _complete _correct _ignored _approximate
+
+# See ZSHCOMPWID "completion matching control"
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z} r:|?=**'
+
+# Use cache for commands using cache
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
+
+# No idea what these do
+zstyle ':completion:*' complete true
+zstyle ':completion:*' complete-options true
+zstyle ':completion:*' file-sort modification
+zstyle ':completion:*' keep-prefix true
+
+zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
+zstyle ':completion:*:*:*:*:descriptions' format '%F{blue}-- %D %d --%f'
+zstyle ':completion:*:*:*:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:*:*:*:warnings' format ' %F{red}-- no matches found --%f'
+
+
+# Different cursors in vi insert and normal mode
+cursor_mode() {
+    # See https://ttssh2.osdn.jp/manual/4/en/usage/tips/vim.html for cursor shapes
+    cursor_block='\e[2 q'
+    cursor_beam='\e[6 q'
+
+    function zle-keymap-select {
+        if [[ ${KEYMAP} == vicmd ]] ||
+            [[ $1 = 'block' ]]; then
+            echo -ne $cursor_block
+        elif [[ ${KEYMAP} == main ]] ||
+            [[ ${KEYMAP} == viins ]] ||
+            [[ ${KEYMAP} = '' ]] ||
+            [[ $1 = 'beam' ]]; then
+            echo -ne $cursor_beam
+        fi
+    }
+
+    zle-line-init() {
+        echo -ne $cursor_beam
+    }
+
+    zle -N zle-keymap-select
+    zle -N zle-line-init
+}
+
+cursor_mode

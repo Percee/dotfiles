@@ -1,0 +1,6 @@
+* Goals
+Similar bash and zsh configuration
+Feature flag system using chezmoi templates and ignore systems
+Gotta go fast
+Avoid complex things
+Keep home directory as clean as possible

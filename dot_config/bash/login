@@ -1,0 +1,3 @@
+. ~/.config/shell/login
+
+export HISTTIMEFORMAT="[%F %T] "
