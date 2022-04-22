@@ -13,8 +13,12 @@ setopt extended_history		# Timestamp each command
 setopt auto_list		# Automatically list choices on ambiguous completion
 setopt auto_menu		# Automatically use menu completion
 setopt menu_complete		# Automatically select first element of completion menu
+setopt list_packed		# More compact completion menu
+setopt auto_param_slash		# When completing a directory, add a trailing slash
 setopt always_to_end		# Move cursor to end if word had one match
 setopt complete_in_word		# Complete from anywhere withing a word ('work|ace' press TAB -> 'workspace|')
+
+setopt long_list_jobs
 
 setopt correct_all		# Attempt to correct command and arguments ('lss wokspace')
 setopt hash_list_all		# First completion slower, but avoids false report of spelling error
@@ -50,6 +54,10 @@ down-line-or-local-history() {
     zle set-local-history 0
 }
 zle -N down-line-or-local-history
+
+_zsh_cli_fg() { fg; }
+zle -N _zsh_cli_fg
+bindkey '^Z' _zsh_cli_fg
 
 ####### Vi mode
 autoload -U select-word-style
@@ -142,9 +150,11 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' group-name '' # group by category
 zstyle ':completion:*:*:-command-:*:*' group-order aliases builtins functions commands
 zstyle ':completion:*' completer _expand _expand_alias  _complete _correct _ignored _approximate
+#zstyle ':completion:*' file-list all # more detailed list of files, but lose coloring
 
 # See ZSHCOMPWID "completion matching control"
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z} r:|?=**'
+#zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z} r:|?=**'
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # Use cache for commands using cache
 zstyle ':completion:*' use-cache on
@@ -189,3 +199,12 @@ cursor_mode() {
 }
 
 cursor_mode
+
+alias d="dirs -v"
+for index ({1..9}) alias "$index"="cd +${index}"; unset index # Aliases from 1 to 9 to jump to a dir on the stack
+
+# History & search history
+unalias h
+h () {
+  fc -Dlim "*$@*" 1 | tac | less -+F
+}

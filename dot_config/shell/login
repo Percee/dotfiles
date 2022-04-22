@@ -5,14 +5,17 @@ pathprepend ~/.local/bin PATH
 pathprepend ~/.bin PATH
 
 export PAGER="less -R"
+export LESS="-FR"
 
 editor=$(which vi)
+export VIMINIT="source $HOME/.config/vim/vimrc"
 if [ "$(command_available vim)" = "0" ]; then
 	editor=$(which vim)
 fi
 if [ "$(command_available nvim)" = "0" ]; then
 	editor=$(which nvim)
 fi
+
 
 export EDITOR="$editor"
 export VISUAL="$editor"

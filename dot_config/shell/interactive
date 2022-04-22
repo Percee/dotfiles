@@ -8,7 +8,7 @@ if [ "$(command_available chezmoi)" = "0" ]; then
 	alias cmcd="chezmoi cd"
 fi
 
-alias v="$editor"
+alias v="$EDITOR"
 alias sv='sudoedit'
 
 alias en='emacs -nw'
@@ -19,6 +19,7 @@ alias ga="git add"
 alias gs="git status"
 alias gss="git status -s"
 alias gc="git commit"
+alias gcm="git commit -m"
 alias gp="git push"
 alias gpo="git push origin"
 alias gpt="git push --tag"
@@ -32,8 +33,6 @@ alias gr="git remote"
 alias grs="git remote show"
 alias gco="git checkout"
 alias gpl="git pull"
-
-alias less="less -R" # don't escape color control characters
 
 alias ls="ls -h --color=auto"
 alias l="ls"
@@ -67,12 +66,13 @@ alias sl="ls"
 alias dc"=cd"
 
 alias ..="cd .."
-alias ...="cd ..."
-alias ....="cd ...."
-alias .....="cd ....."
+alias ...="cd ... & pwd"
+alias ....="cd .... & pwd"
+alias .....="cd ..... & pwd"
 
 alias d="dirs -v" # display directories on the pushd stacks
-for index ({1..9}) alias "$index"="cd +${index}"; unset index # Aliases from 1 to 9 to jump to a dir on the stack
+
+alias h="history | tac | less -+F"
 
 alias _="sudo"
 
