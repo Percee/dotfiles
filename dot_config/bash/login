@@ -1,3 +1,4 @@
 . ~/.config/shell/login
 
 export HISTTIMEFORMAT="[%F %T] "
+export HISTFILESIZE=100000

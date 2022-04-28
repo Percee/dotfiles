@@ -1,1 +1,2 @@
-. ~/.config/shell/login
+# Sourcing shell/login doesn't work because of syntax incompatibilities. If we login through bash or zsh and THEN use ksh, we should have the environment variables setup
+#. ~/.config/shell/login

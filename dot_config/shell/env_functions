@@ -57,3 +57,10 @@ command_available () {
     command -v "$1" > /dev/null 2>&1
     echo $?
 }
+
+get_shell() {
+[ ! -z "$BASH" ] && echo "bash" && return
+[ ! -z "$ZSH_NAME" ] && echo "zsh" && return
+[ ! -z "${PS3+x}" ] && [ ! -z "${PS4+x}" ] && echo "ksh" && return
+echo "sh"
+}

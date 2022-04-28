@@ -1,1 +1,8 @@
-. ~/.config/shell/interactive
+# Because of the way sh initializes, we load this file from ~/.config/shell/interactive
+
+. ~/.config/sh/env
+
+: "${USER=$(id -un)}" "${HOSTNAME=$(uname -n)}"
+export PS1='$USER@$HOSTNAME:$PWD/ $ '
+
+unset HISTFILE

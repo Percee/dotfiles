@@ -1,2 +1,3 @@
-. ~/.config/shell/env
+# Because of how sh initializes, we source this file from ~/.config/shell/env
+
 . ~/.config/sh/login

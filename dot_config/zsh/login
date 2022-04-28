@@ -2,7 +2,5 @@
 
 export ZDOTDIR=~/.config/zsh
 
-export HISTFILE="${HISTFILE:-${ZDOTDIR:-$HOME}/.zhistory}"  # The path to the history file.
-export HISTSIZE=100000			# The maximum number of events to save in the internal history.
 export SAVEHIST=100000			# The maximum number of events to save in the history file.
 export DIRSTACKSIZE=100			# Size of the pushd stack

@@ -1,2 +1,3 @@
-. ~/.config/shell/env
+# Because of how ksh initializes, we source this file from ~/.config/shell/env
+
 . ~/.config/ksh/login

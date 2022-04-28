@@ -1,1 +1,15 @@
-. ~/.config/shell/interactive
+# Because of how ksh initializes, we source this file from ~/.config/shell/interactive
+
+. ~/.config/ksh/env
+
+ksh_data_dir="$XDG_DATA_HOME/ksh"
+[ ! -d "$ksh_data_dir" ] && mkdir -p "$ksh_data_dir"
+
+
+export PS1=$'\E[35;7m$USER@$(hostname -s)\E[0m:\E[32;1m$PWD \E[0m$ '
+
+
+### History
+# We export these variables here in case of starting terminal in another shell and then starting ksh, we need to overwrite history config
+export HISTFILE="$ksh_data_dir/ksh_history"
+export HISTSIZE=100000

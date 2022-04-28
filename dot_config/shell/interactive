@@ -3,6 +3,7 @@
 # - Defining aliases
 
 . ~/.config/shell/env_functions
+
 if [ "$(command_available chezmoi)" = "0" ]; then
 	alias cm="chezmoi"
 	alias cmcd="chezmoi cd"
@@ -111,3 +112,8 @@ x () {
        echo "'$1' is not a valid file!"
    fi
 }
+
+### At the end
+# If in ksh or sh, load their config
+[ "$(get_shell)" = "ksh" ] && . ~/.config/ksh/interactive
+[ "$(get_shell)" = "sh" ] && . ~/.config/sh/interactive
