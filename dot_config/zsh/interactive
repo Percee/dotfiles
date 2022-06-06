@@ -73,9 +73,9 @@ autoload -U select-word-style
 select-word-style bash
 bindkey -v      #enable vi mode
 export KEYTIMEOUT=10
+bindkey "^?" backward-delete-char
 ### Vi normal mode
 bindkey -M vicmd '^[' undefined-key \
-                 '^?' backward-delete-char \
                  '^[^?' backward-kill-word \
                  '^[[3~' delete-char \
                  '^[^[[3~' vi-kill-word \
@@ -151,6 +151,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history \
 		      'l' vi-forward-char \
 		      '^[j' accept-and-hold \
 		      '^U' undo
+#'\t' accept-line
 
 
 
@@ -159,6 +160,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu select
 zstyle ':completion:*' group-name '' # group by category
 zstyle ':completion:*:*:-command-:*:*' group-order aliases builtins functions commands
+zstyle ':completion:*:cd:*' group-order local-directories
 zstyle ':completion:*' completer _expand _expand_alias  _complete _correct _ignored _approximate
 #zstyle ':completion:*' file-list all # more detailed list of files, but lose coloring
 

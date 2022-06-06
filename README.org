@@ -4,3 +4,17 @@ Feature flag system using chezmoi templates and ignore systems
 Gotta go fast
 Avoid complex things
 Keep home directory as clean as possible
+
+* How to use this in a professional environment
+A big problem of working in corporate setting is that you're not free to install just any
+binary you can pull from the internet. In fact doing that usually gets you fired quick.
+
+Using this config as is in such an environment won't work because:
+- We cannot download the chezmoi binary
+- We cannot download plugins (vim, emacs, tmux...)
+
+As a workaround we use Chezmoi's templating system to disable plugins, and we then export
+the config to a specific directory which we can then zip and send over email to our
+professional account.
+
+: chezmoi apply --destination ~/chezmoi-pro-config
