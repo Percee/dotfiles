@@ -1,9 +1,9 @@
 * Goals
-Similar bash and zsh configuration
-Feature flag system using chezmoi templates and ignore systems
-Gotta go fast
-Avoid complex things
-Keep home directory as clean as possible
+- Similar (as mush as possible) bash, zsh, ksh and sh configuration
+- Feature flag system using chezmoi's template and ignore systems
+- Go fast (no loading when starting shell/splitting tmux pane)
+- Avoid complex things
+- Keep home directory as clean as possible
 
 * How to use this in a professional environment
 A big problem of working in corporate setting is that you're not free to install just any
