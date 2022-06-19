@@ -224,6 +224,8 @@ h () {
 ### Prompt
 # Taken from https://github.com/Phantas0s/purification/blob/master/prompt_purification_setup
 
+ZLE_RPROMPT_INDENT=0
+
 git_prompt_status() {
   local INDEX STATUS
 
@@ -346,7 +348,6 @@ prompt_purification_setup() {
 
     prompt_git_branch
     RPROMPT='$(prompt_git_info) $(git_prompt_status)'
-    PROMPT=$'%F{white}%~ %B%F{blue}'
     PROMPT=$'%F{white}%~ %B%F{blue}${vim_mode}%f%b '
 }
 
