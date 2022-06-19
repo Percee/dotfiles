@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # set -euo pipefail
 
-export CHEZMOI_DIR="$HOME/.local/share/chezmoi/"
+export CHEZMOI_DIR="$XDG_DATA_HOME/chezmoi/"
 export MY_BINDIR="$HOME/.local/bin/"
 export DISTRIB_ID=$(lsb_release --id --short)
 export DISTRIB_RELEASE=$(lsb_release --release --short)
