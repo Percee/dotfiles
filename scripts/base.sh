@@ -6,10 +6,8 @@ export MY_BINDIR="$HOME/.local/bin/"
 export DISTRIB_ID=$(lsb_release --id --short)
 export DISTRIB_RELEASE=$(lsb_release --release --short)
 
-# Test if $1 is available
-isavailable() {
-    type "$1" &>/dev/null
-}
+. "$DIR/../dot_config/shell/env_functions"
+. "$DIR/ansi"
 
 export TERM=xterm-256color
 

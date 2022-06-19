@@ -55,7 +55,7 @@ ssource () {
 
 command_available () {
     command -v "$1" > /dev/null 2>&1
-    echo $?
+    return $?
 }
 
 get_shell() {
