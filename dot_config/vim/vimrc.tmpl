@@ -154,8 +154,10 @@ set wildmode=longest:full,list:full
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
+{{- if not .restricted }}
 else
   colorscheme base16-ocean
+{{- end }}
 endif
 let g:lightline = {
 \   'colorscheme': 'base16'
