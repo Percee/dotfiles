@@ -17,6 +17,4 @@ chezmoi-init:
 
 chezmoi-apply:
 	@echo "Applying chezmoi.."
-	@$(MAKE) ensure-dirs #Ensure that ~/.local/tmux/plugins exists for exemple, before downloading tpm
 	$(CHEZMOI) apply --verbose --keep-going
-
