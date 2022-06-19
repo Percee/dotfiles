@@ -1,0 +1,5 @@
+{{- if .restricted }}
+pack/
+autoload/
+colors/
+{{- end }}
