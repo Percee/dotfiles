@@ -4,7 +4,7 @@
 
 . ~/.config/shell/env_functions
 
-if [ "$(command_available chezmoi)" = "0" ]; then
+if command_available chezmoi; then
 	alias cm="chezmoi"
 	alias cmcd="chezmoi cd"
 fi

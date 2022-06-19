@@ -11,11 +11,11 @@ export LESS="-FR"
 editor=$(which vi)
 export VIMINIT="source $HOME/.config/vim/vimrc"
 
-[ "$(command_available vim)" = "0" ] && editor="$(which vim)"
-#[ "$(command_available nvim)" = "0" ] && editor="$(which nvim)"
+command_available vim && editor="$(which vim)"
+#command_available nvim && editor="$(which nvim)"
 
 
-[ "$(command_available keychain)" = "0" ] && eval `keychain --agents gpg,ssh --eval --quiet`
+command_available keychain && eval `keychain --agents gpg,ssh --eval --quiet`
 
 export EDITOR="$editor"
 export VISUAL="$editor"
