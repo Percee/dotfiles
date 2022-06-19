@@ -22,3 +22,7 @@ the config to a specific directory which we can then zip and send over email to 
 professional account.
 
 : chezmoi apply --destination ~/chezmoi-pro-config
+
+* Change theme using base16-shell
+: base16 <TAB>
+Choose your theme, will be saved in ~/.base16_theme and ~/.vimrc_background

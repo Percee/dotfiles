@@ -1,0 +1,3 @@
+{{- if .restricted }}
+base16-shell
+{{- end }}
