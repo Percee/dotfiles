@@ -1,0 +1,10 @@
+{{- $restricted := false }}
+
+{{- $restricted = promptBool "Use restricted configuration? No third-party binaries/plugins/scripts" }}
+
+encryption: gpg
+gpg:
+  symmetric: true
+
+data:
+  restricted: {{ $restricted }}

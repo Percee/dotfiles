@@ -23,7 +23,7 @@ setopt complete_in_word		# Complete from anywhere withing a word ('work|ace' pre
 
 setopt long_list_jobs
 
-setopt correct_all		# Attempt to correct command and arguments ('lss wokspace')
+setopt correct_all		# Attempt to correct command and arguments ('less wokspace')
 setopt hash_list_all		# First completion slower, but avoids false report of spelling error
 
 setopt autocd			# Type directory name to cd into it
@@ -351,3 +351,8 @@ prompt_purification_setup() {
 }
 
 prompt_purification_setup
+
+{{- if not .restricted }}
+# Plugins
+eval "$("$BASE16_SHELL/profile_helper.sh")"
+{{- end }}

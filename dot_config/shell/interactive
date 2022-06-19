@@ -34,6 +34,8 @@ alias gr="git remote"
 alias grs="git remote show"
 alias gco="git checkout"
 alias gpl="git pull"
+alias gia="git add -i"
+alias gir="git rebase -i"
 
 alias ls="ls -h --color=auto"
 alias l="ls"

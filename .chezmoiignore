@@ -1,2 +1,8 @@
 docker/
+scripts/
 README.org
+Makefile
+
+{{- if .restricted }}
+
+{{- end }}
