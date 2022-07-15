@@ -1,3 +1,5 @@
+let g:is_nvim = has('nvim')
+
 if !exists("g:os")
     if has("win64") || has("win32") || has("win16")
         let g:os = "Windows"
@@ -25,11 +27,6 @@ let &runtimepath = &runtimepath . ',' . config_dir . ',' . config_dir . '/after'
 let &packpath = &packpath . ',' . config_dir
 let &viminfo = &viminfo .  ',n' . data_dir . '/viminfo'
 
-
-"if ! has('nvim')
-"set rtp^="~/.local/share/vim"
-"endif
-
 runtime init/functions.vim
 runtime init/filetype.vim
 runtime init/general.vim
@@ -37,3 +34,6 @@ runtime init/mapping.vim
 runtime init/colors.vim
 runtime init/plugins.vim
 runtime init/platforms.vim
+if ! is_nvim
+    runtime init/only_vim.vim
+endif
