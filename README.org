@@ -1,3 +1,7 @@
+* TODO Things to do
+- Make nvim work
+- Make chezmoi work on Windows
+
 * Goals
 - Similar (as mush as possible) bash, zsh, ksh and sh configuration
 - Feature flag system using chezmoi's template and ignore systems

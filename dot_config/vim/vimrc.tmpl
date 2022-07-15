@@ -1,22 +1,22 @@
 if !exists("g:os")
-	if has("win64") || has("win32") || has("win16")
-		let g:os = "Windows"
-	elseif system('uname -r') =~ "WSL"
-		let g:os = "WSL"
-	else
-		let g:os = substitute(system('uname'), '\n', '', '')
-	endif
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    elseif system('uname -r') =~ "WSL"
+        let g:os = "WSL"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
 endif
 
 if empty("$XDG_CONFIG_HOME")
-	let config_dir = $HOME . '/.config/vim'
+    let config_dir = $HOME . '/.config/vim'
 else
-	let config_dir = $XDG_CONFIG_HOME . '/vim'
+    let config_dir = $XDG_CONFIG_HOME . '/vim'
 endif
 if empty("$XDG_DATA_HOME")
-	let data_dir = $HOME . '/.local/share/vim'
+    let data_dir = $HOME . '/.local/share/vim'
 else
-	let data_dir = $XDG_DATA_HOME . '/vim'
+    let data_dir = $XDG_DATA_HOME . '/vim'
 endif
 
 call mkdir(data_dir, 'p')

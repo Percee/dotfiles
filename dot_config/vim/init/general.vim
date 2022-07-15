@@ -1,15 +1,17 @@
 if !has('nvim')
-  set ttymouse=xterm2
+    set ttymouse=xterm2
 endif
-
 set mouse=a
+
+set autoindent
+filetype indent plugin on
 
 " default file encoding and unicode
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 set bomb                     " vim will put a 'byte order mark' (
-                             " or BOM for short) at the start of Unicode files
+" or BOM for short) at the start of Unicode files
 set fileformats=unix,mac,dos " recognize file formats
 
 set backspace=indent,eol,start " make backspace work like most other apps
@@ -23,9 +25,9 @@ if has("autocmd")
 endif
 " For everything else, use a tab width of 4 space chars.
 set tabstop=4       " The width of a TAB is set to 4.
-                    " Still it is a \t. It is just that
-                    " Vim will interpret it to be having
-                    " a width of 4.
+" Still it is a \t. It is just that
+" Vim will interpret it to be having
+" a width of 4.
 set shiftwidth=4    " Indents will have a width of 4.
 set softtabstop=4   " Sets the number of columns for a TAB.
 set expandtab       " Expand TABs to spaces.
@@ -34,7 +36,6 @@ set expandtab       " Expand TABs to spaces.
 set modeline
 set textwidth=80
 
-set autoindent
 
 set autochdir " cwd of vim follows that of opened file in current window
 
@@ -53,19 +54,21 @@ set list listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
 set cursorline     " find cursor faster.
 
 
-               " searching
+" searching
 set hlsearch   " highlight all search matches
 set incsearch  " start searching when you type the first character of the search string
 set ignorecase " searching is not case sensitive
 set smartcase  " when 'ignorecase' and 'smartcase' are both on, if a
-               " pattern contains an uppercase letter, it is case sensitive,
+" pattern contains an uppercase letter, it is case sensitive,
 
-               " otherwise, it is not
+" otherwise, it is not
 
 set gdefault   " sub all matches in a line by default
 
 
-set binary        " makes Vim more suitable for editing binary files
+"set binary        " makes Vim more suitable for editing binary files
+" We don't set it because it disables tabexpand
+
 set shell=/bin/sh " use sh as default shell
 
 " programming
@@ -83,15 +86,15 @@ set directory=/tmp " dir for tmp files
 
 " jump to the last position when reopening a file
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 " info
 set number relativenumber
 augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
 set numberwidth=5   " width of number column
@@ -104,14 +107,14 @@ set ttyfast         " improve redrawing
 set lazyredraw      " will not redraw the screen while running macros (goes faster)
 
 if has('linebreak')
-  try
-    set breakindent             " visually indent wrapped lines
-    let &showbreak='↳'
+    try
+        set breakindent             " visually indent wrapped lines
+        let &showbreak='↳'
 
-  catch /E518:/
+    catch /E518:/
 
-    " Unknown option: breakindent
-  endtry
+        " Unknown option: breakindent
+    endtry
 
 endif
 
@@ -144,8 +147,8 @@ let &t_EI = "\e[2 q"
 
 " reset the cursor on start (for older versions of vim, usually not required)
 augroup myCmds
-au!
-autocmd VimEnter * silent !echo -ne "\e[2 q"
+    au!
+    autocmd VimEnter * silent !echo -ne "\e[2 q"
 augroup END
 
 
@@ -153,5 +156,4 @@ augroup END
 set completeopt-=preview
 
 set nocompatible
-filetype indent plugin on
 syntax on

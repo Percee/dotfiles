@@ -15,14 +15,14 @@ hi User4 ctermfg=70
 hi User5 ctermfg=226
 
 if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
+    let base16colorspace=256
+    source ~/.vimrc_background
 {{- if not .restricted }}
 else
-  colorscheme base16-ocean
+    colorscheme base16-ocean
 {{- end }}
 endif
 let g:lightline = {
-\   'colorscheme': 'base16'
-\ }
+            \   'colorscheme': 'base16'
+            \ }
 
