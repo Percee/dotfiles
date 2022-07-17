@@ -12,7 +12,7 @@ editor=$(which vi)
 export VIMINIT="source $HOME/.config/vim/vimrc"
 
 command_available vim && editor="$(which vim)"
-#command_available nvim && editor="$(which nvim)"
+command_available nvim && editor="$(which nvim)"
 
 
 command_available keychain && eval `keychain --agents gpg,ssh --eval --quiet`

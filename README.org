@@ -1,8 +1,10 @@
 * TODO Things to do
-- Make nvim work
 - Make chezmoi work on Windows
 
-* Environment variables to set
+* How to install
+** Windows
+
+** Environment variables to set
 On Linux the environment variable are set mainly in ~/.config/shell/login
 On Windows you must set:
 - XDG_CONFIG_HOME: C:\Users\USER\.config
